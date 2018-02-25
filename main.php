@@ -9,7 +9,7 @@ function addFileRecursively($filePath = '', $currentPath = ''){
         }
         if (is_dir($currentPath.'/'.$entry)){
             $fileType = 'dir';
-    
+            //addFileRecursively($filePath,$currentPath.'/'.$entry);
         } else {
             $fileType = 'not dir';
         }
