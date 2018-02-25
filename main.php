@@ -7,14 +7,12 @@ function addFileRecursively($filePath = '', $currentPath = ''){
     while ($entry = $d->read()) {
         if ($entry=='.' || $entry=='..'){
             continue;
+        } else if (is_dir($currentPath.'/'.$entry)){
+            $success = addFileRecursively($filePath,$currentPath.'/'.$entry);
+            if (!$success){
+                break;
+            }
         }
-        if (is_dir($currentPath.'/'.$entry)){
-            $fileType = 'dir';
-            //$success = addFileRecursively($filePath,$currentPath.'/'.$entry);
-        } else {
-            $fileType = 'not dir';
-        }
-        echo $entry.' '.$fileType."\n";
     }
     if ($success){
         if (copy($filePath,$currentPath)){
