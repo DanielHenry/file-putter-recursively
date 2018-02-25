@@ -11,7 +11,12 @@ while ($entry = $d->read()) {
     if ($entry=='.' || $entry=='..'){
         continue;
     }
-    echo $entry."\n";
+    if (is_dir($currentPath.'/'.$entry)){
+        $fileType = 'dir';
+    } else {
+        $fileType = 'not dir';
+    }
+    echo $entry.' '.$fileType."\n";
 }
 
 ?>
